@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="EcomDev\ProductDataPreLoader\DataService\LoadService">
+        <arguments>
+            <argument name="loaders" xsi:type="array">
+                <item name="configurable_child_ids" xsi:type="object">Sigma\PreloaderChildProductIDs\Loader\ConfigurableChildProductIds</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="product_identities_extender" disabled="true" />
+        <plugin
+                name="use_preloaded_child_product_ids"
+                type="Sigma\PreloaderChildProductIDs\Plugin\ProductIdentitiesExtender"
+        />
+    </type>
+</config>
